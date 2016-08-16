@@ -78,4 +78,7 @@
     display: inline-block;
     min-width: 200px;
   }
+  .portfolio-thumbnails{
+    width: 30%;
+  }
 }
