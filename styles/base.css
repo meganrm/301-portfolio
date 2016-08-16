@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+  font-family: sans-serif;
+  color: #838689;
+
+}
+ul{
+  list-style: none;
+  padding-left: 0;
+
+}
+
+a{
+  text-decoration: none;
+  color: #7A6A53;
+
+}
+
+a:hover{
+  color: #99B2B7;
+}
+
+h1, h2, h3, h4{
+  margin: 0px;
+}

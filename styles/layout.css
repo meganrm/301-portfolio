@@ -1,0 +1,81 @@
+
+/*mobile nav styling*/
+.menu-bar{
+  padding: 12px;
+  background-color: #D5DED9;
+  min-height: 40px;
+}
+.icon-menu{
+  float: left;
+  display: inline-block;
+  width: 20%;
+  font-size: 20px;
+  color: #7A6A53;
+
+}
+
+.menu-bar ul{
+  display: none;
+}
+
+.social{
+  float: right;
+  padding-right: 20px;
+}
+
+.social li{
+  display: inline-block;
+  width: 20px;
+}
+
+.menu-bar li{
+  display: block;
+  padding: 10px;
+  color: white;
+}
+.menu-bar:hover ul{
+  display: block;
+}
+
+/*main banner*/
+.banner{
+  background-image: url(../images/fish2_081.png);
+  height: 300px;
+  background-size: cover;
+}
+.banner h1{
+  text-align: center;
+  padding-top: 100px;
+  color: #838689;
+
+}
+
+/*portfolio items*/
+.portfolio-thumbnails li{
+  border-bottom: solid 2px #5D4157;
+  height: 300px;
+  text-align: center;
+
+}
+.portfolio-thumbnails p{
+  width: 60%;
+  margin: auto;
+  text-align: left;
+  margin-top: 20px;
+}
+
+
+
+/*full screen */
+@media (min-width: 571px) {
+  .icon-menu{
+    display: none;
+  }
+  .menu-bar ul{
+    display: block;
+  }
+  .menu-bar li{
+    display: inline-block;
+    min-width: 200px;
+  }
+}
