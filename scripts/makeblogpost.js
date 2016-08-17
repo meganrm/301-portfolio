@@ -12,7 +12,8 @@ function Post(opts){
 Post.prototype.toHtml= function(){
   var $newblogPost = $('article.template');
   $newblogPost.attr('data-category', this.category);
-  $newblogPost.find('header h4').text(this.title);
+  $newblogPost.find('header h2').text(this.title);
+  $newblogPost.find('.content').append(this.content);
   $newblogPost.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 
   $newblogPost.find('.date time').attr({
@@ -20,6 +21,8 @@ Post.prototype.toHtml= function(){
     'datatime' : this.publishedOn
   });
   $newblogPost.removeClass('template');
+  $newblogPost.addClass('published-Post');
+
   return $newblogPost;
 };
 
