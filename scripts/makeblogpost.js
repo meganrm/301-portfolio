@@ -22,6 +22,10 @@ Post.prototype.toHtml= function(){
   });
   $newblogPost.removeClass('template');
   $newblogPost.addClass('published-Post');
+  var $parentOptions = $('#category-filter');
+  if ($parentOptions.find(this.category).length===0){
+    $('<option>').val(this.category).text(this.category).appendTo($parentOptions);
+  }
 
   return $newblogPost;
 };
