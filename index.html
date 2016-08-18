@@ -27,9 +27,9 @@
 
       </div>
         <ul >
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="projects.html">Projects</a></li>
+          <li class='tab' data-content="projects"><a href="#">Home</a></li>
+          <li class='tab' data-content="blog-posts"><a href="#">Blog</a></li>
+          <li class='tab' data-content="projects"><a href="#">Projects</a></li>
 
         </ul>
       </nav>
@@ -40,7 +40,7 @@
     </header>
 
     <main>
-      <section id="projects">
+      <section id="projects" class="tab-content">
 
         <ul>
           <li>
@@ -50,12 +50,11 @@
               This is a project I'm developing that enables users to see a citation network of a given scientific query. You can search for authors names, keywords, journals, etc. The app uses Scopus API.
             </p>
           </li>
-          <li></li>
-          <li></li>
+
         </ul>
       </section>
 
-      <section id = "blog-posts">
+      <section id = "blog-posts" class="tab-content">
         <article class="template">
           <header>
             <h2>Title</h2>
@@ -76,8 +75,15 @@
         </article>
       </section>
     </main>
+
+
     <footer>
 
     </footer>
+
+    <script   src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src='scripts/blogposts.js'></script>
+    <script type="text/javascript" src='scripts/makeblogpost.js'>    </script>
+    <script type="text/javascript" src='scripts/nav.js'></script>
   </body>
 </html>
