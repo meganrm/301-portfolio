@@ -8,7 +8,30 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    <script id="article-template" type="text/x-handlebars-templates">
 
+    <article >
+      <header>
+        <h2>{{title}}</h2>
+
+      </header>
+      <main>
+
+        <div class="date">
+          published <time>{{publishedStatus}}</time>
+
+        </div>
+
+        <section class="content">{{{content}}}
+          <code class="example-code">
+            {{code}}
+          </code>
+        </section>
+
+      </main>
+
+    </article>
+  </script>
 
   </head>
   <body>
@@ -91,6 +114,7 @@
     <footer>
 
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src='scripts/blogposts.js'></script>
