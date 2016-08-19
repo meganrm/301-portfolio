@@ -27,9 +27,9 @@
 
       </div>
         <ul >
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="projects.html">Projects</a></li>
+          <li class='tab' data-content="projects"><a href="#">Home</a></li>
+          <li class='tab' data-content="blog-posts"><a href="#">Blog</a></li>
+          <li class='tab' data-content="projects"><a href="#">Projects</a></li>
 
         </ul>
       </nav>
@@ -40,7 +40,7 @@
     </header>
 
     <main>
-      <section id="projects">
+      <section id="projects" class="tab-content">
 
         <ul>
           <li>
@@ -50,12 +50,19 @@
               This is a project I'm developing that enables users to see a citation network of a given scientific query. You can search for authors names, keywords, journals, etc. The app uses Scopus API.
             </p>
           </li>
-          <li></li>
-          <li></li>
+
         </ul>
       </section>
 
-      <section id = "blog-posts">
+      <section id = "blog-posts" class="tab-content">
+        <div>
+          <ul id="filters">
+              <select id="category-filter">
+                <option value="">-- Filter by Categories --</option>
+              </select>
+            </li>
+          </ul>
+        </div>
         <article class="template">
           <header>
             <h2>Title</h2>
@@ -67,8 +74,11 @@
               published <time>Publish time</time>
 
             </div>
-            <section class="content">
 
+            <section class="content">
+              <code class="example-code">
+
+              </code>
             </section>
 
           </main>
@@ -76,8 +86,17 @@
         </article>
       </section>
     </main>
+
+
     <footer>
 
     </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src='scripts/blogposts.js'></script>
+    <script type="text/javascript" src='scripts/makeblogpost.js'>    </script>
+    <script type="text/javascript" src='scripts/nav.js'></script>
+    <script type="text/javascript" src='scripts/blogViewing.js'></script>
+
   </body>
 </html>
