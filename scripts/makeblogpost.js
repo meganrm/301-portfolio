@@ -1,38 +1,27 @@
 var poststopublish = [];
 
 function Post(opts){
-  this.title = opts.title;
-  this.category = opts.category;
-  this.publishedOn = opts.publishedOn;
-  this.content = opts.content;
-  this.image = opts.image;
-  this.code = opts.code;
+  for (keys in opts) {
+    this[keys] = opts[keys];
+  };
+};
 
-}
-
-Post.prototype.toHtml= function(){
-  var $newblogPost = $('article.template').clone();
-  $newblogPost.removeClass('template');
-  $newblogPost.addClass('published-Post');
-  $newblogPost.attr('data-category', this.category);
-  $newblogPost.find('header h2').text(this.title);
-  $newblogPost.find('.content').html(this.content);
-  $newblogPost.find('.example-code').html(this.code);
-  $newblogPost.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
-  $newblogPost.find('.date time').attr({
-    'title': this.publishedOn,
-    'datatime' : this.publishedOn
-  });
+var authorList = new Post();
+authorList.authors = ['author', 'author2'];
 
 
+Post.prototype.toHtml= function(templateid){
+  var source = $(templateid).html();
+  var renderTemplate = Handlebars.compile(source);
+  return renderTemplate(this);
+};
+
+Post.prototype.createFilter= function(){
   var $parentOptions = $('#category-filter');
   if ($parentOptions.find('option[value="' + this.category + '"]').length===0){
     $('<option>').val(this.category).text(this.category).appendTo($parentOptions);
   };
-  // console.log('new blog' + $newblogPost);
-  return $newblogPost;
 };
-
 
 
 postsObjList.sort(function(firstEle, secondEle){
@@ -43,7 +32,12 @@ postsObjList.forEach(function(element){
   poststopublish.push(new Post(element));
 });
 
+$('#current-authors').append(authorList.toHtml('#author-template'));
+
+
 poststopublish.forEach(function(article){
-  console.log(article.toHtml());
-  $('#blog-posts').append(article.toHtml());
+  this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
+  this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
+  article.createFilter();
+  $('#blog-posts').append(article.toHtml('#article-template'));
 });
