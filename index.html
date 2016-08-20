@@ -8,31 +8,31 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    <!-- article template -->
     <script id="article-template" type="text/x-handlebars-templates">
-
     <article >
       <header>
         <h2>{{title}}</h2>
-
       </header>
       <main>
-
         <div class="date">
           published <time>{{publishedStatus}}</time>
-
         </div>
-
         <section class="content">{{{content}}}
           <code class="example-code">
             {{code}}
           </code>
         </section>
-
       </main>
-
     </article>
   </script>
-
+  <!-- author template -->
+  <script id="author-template" type="text/x-handlebars-templates">
+    {{#each authors}}
+    <option value='{{this}}' label="{{this}}">{{this}}</option>
+      {{/each}}
+  </script>
+<!-- end author template -->
   </head>
   <body>
     <header>
@@ -53,7 +53,8 @@
           <li class='tab' data-content="projects"><a href="#">Home</a></li>
           <li class='tab' data-content="blog-posts"><a href="#">Blog</a></li>
           <li class='tab' data-content="projects"><a href="#">Projects</a></li>
-
+          <li class='tab' id="riken"><a href="#">Riken app</a></li>
+          <li class='tab' id="todo"><a href="mailto:pgrn website <project.155076351.5868347@todoist.net>">Email a todo to me</a></li>
         </ul>
       </nav>
       <div class="banner">
@@ -107,6 +108,30 @@
           </main>
 
         </article>
+      </section>
+      <section id="riken-form">
+        <form class="" action="mailto:meganrm@gmail.com" method="post">
+          <label for="">
+            <input type="text" id="pub-title" name="name" value="" placeholder="article title">
+          </label>
+          <label for="">
+            <input type="text" id="pub-authors" name="name" value="" placeholder="authors" list="current-authors">
+          </label>
+
+        <datalist id='current-authors'>
+        </datalist>
+
+          <label for="">
+            <input type="text" id="pub-journal" name="name" value="" placeholder="journal">
+          </label>
+          <label for="">
+            <input type="text" id="pub-date" name="name" value="" placeholder="publication year">
+          </label>
+          <label for="">
+            <input type="text" id="pub-PMID" name="name" value="" placeholder="PMID">
+          </label>
+        <button type="submit" name="button"></button>
+        </form>
       </section>
     </main>
 
