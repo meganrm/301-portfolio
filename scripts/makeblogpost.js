@@ -1,4 +1,6 @@
 var poststopublish = [];
+var rikenObjects = [];
+var listOfRikenAuthors = [];
 
 function Post(opts){
   for (keys in opts) {
@@ -7,8 +9,25 @@ function Post(opts){
 };
 
 var authorList = new Post();
-authorList.authors = ['author', 'author2'];
+listOfRikenAuthors.sort(); //can't figure out why this isn't working
+console.log(listOfRikenAuthors);
+authorList.authors = listOfRikenAuthors;
+// authorList.authors = ['author', 'author2', 'john'];
 
+
+Post.prototype.makeCleanArray = function(gList){
+  authors = this['authors'].split(',');
+  for (var i = 0; i < authors.length; i++) {
+    if ((gList.indexOf(authors[i].trim().replace(/\./g,''))) === -1) {
+      gList.push(authors[i].trim().replace(/\./g,''));
+      // console.log(authors[i]);
+    }
+    else{
+      // console.log('already in list '+ authors[i]);
+    }
+  }
+
+};
 
 Post.prototype.toHtml= function(templateid){
   var source = $(templateid).html();
@@ -24,6 +43,7 @@ Post.prototype.createFilter= function(){
 };
 
 
+//blog handeling
 postsObjList.sort(function(firstEle, secondEle){
   return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
 });
@@ -32,8 +52,32 @@ postsObjList.forEach(function(element){
   poststopublish.push(new Post(element));
 });
 
-$('#current-authors').append(authorList.toHtml('#author-template'));
 
+
+//RIKEN publications
+Rikenpublications.sort(function(firstEle, secondEle){
+  return (secondEle.date) - (firstEle.date);
+});
+
+Rikenpublications.forEach(function(element){
+  var rikenArticle= new Post(element);
+  rikenObjects.push(rikenArticle);
+  rikenArticle.makeCleanArray(listOfRikenAuthors);
+});
+
+// $('#current-authors').append(authorList.toHtml('#author-template'));
+$('.pub-authors').autocomplete({
+  minLength: 3,
+  source: listOfRikenAuthors
+});
+
+$rikenauthors = $('#riken-authors');
+$('#add-author-button').on('click', function(){
+  $('<input>').attr('type', 'text').addClass('pub-authors').appendTo($rikenauthors).autocomplete({
+    minLength: 3,
+    source: listOfRikenAuthors
+  });
+});
 
 poststopublish.forEach(function(article){
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);

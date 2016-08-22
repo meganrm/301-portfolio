@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/jquery-ui.min.css">
+    <link rel="stylesheet" href="styles/jquery-ui.theme.css">
+    <link rel="stylesheet" href="styles/jquery-ui.structure.min.css">
+
     <!-- article template -->
     <script id="article-template" type="text/x-handlebars-templates">
     <article >
@@ -33,6 +37,11 @@
       {{/each}}
   </script>
 <!-- end author template -->
+<!-- new author template  -->
+<script id="new-author-template" type="text/x-handlebars-templates">
+  <input type="text" class="pub-authors" name="name" value="" placeholder="author" list="" >
+</script>
+ <!-- end new author template -->
   </head>
   <body>
     <header>
@@ -114,12 +123,13 @@
           <label for="">
             <input type="text" id="pub-title" name="name" value="" placeholder="article title">
           </label>
-          <label for="">
-            <input type="text" id="pub-authors" name="name" value="" placeholder="authors" list="current-authors">
+          <label for="" id="riken-authors">
+            <input type="text" class="pub-authors" name="name" value="" placeholder="authors" list="" >
           </label>
+          <button type="button" name="button" id="add-author-button">Add another author</button>
 
-        <datalist id='current-authors'>
-        </datalist>
+        <!-- <datalist id='current-authors'>
+        </datalist> -->
 
           <label for="">
             <input type="text" id="pub-journal" name="name" value="" placeholder="journal">
@@ -130,7 +140,7 @@
           <label for="">
             <input type="text" id="pub-PMID" name="name" value="" placeholder="PMID">
           </label>
-        <button type="submit" name="button"></button>
+        <button type="submit" name="button">Email to Megan</button>
         </form>
       </section>
     </main>
@@ -142,6 +152,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src='scripts/rikenpublications.js'></script>
+  <script type="text/javascript" src='scripts/jquery-ui.min.js'></script>
+
     <script type="text/javascript" src='scripts/blogposts.js'></script>
     <script type="text/javascript" src='scripts/makeblogpost.js'>    </script>
     <script type="text/javascript" src='scripts/nav.js'></script>

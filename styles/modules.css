@@ -26,3 +26,22 @@
 .template {
   display: none;
 }
+
+datalist{
+  overflow: scroll;
+  height: 20px;
+}
+
+form input{
+  display: inline-block;
+  width: 300px;
+  margin: 20px;
+}
+
+form{
+  width: 60%;
+}
+
+#add-author-button{
+  display: inline;
+}
