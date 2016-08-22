@@ -1,4 +1,4 @@
-var publications=[
+var Rikenpublications=[
 {title:'Systematic Meta-Analysis and Field Synopsis of Genetic Association Studies in Colorectal Adenomas.',
 authors: 'Montazeri Z, Theodoratou E, Nyiraneza C, Timofeeva M, Chen W, Svinti V, Sivakumaran S, Gresham G, Cubitt L, Carvajal-Carmona L. Bertagnolli MM, Zauber AG, Tomlinson I, Farrington SM, Dunlop MG, Campbell H. Little',
  journal :'J.  Int J Epidemiol',
@@ -75,7 +75,8 @@ date:  '2014 Oct;28(10):1740-51.',
  },
 
 {title: 'Integrating genetic, transcriptional, and functional analyses toidentify 5 novel genes for atrial fibrillation.',
-authors: 'Sinner MF, Tucker NR, Lunetta KL, Ozaki K, Smith JG, Trompet S, Bis JC, Lin H, Chung MK, Nielsen JB, Lubitz SA, Krijthe BP, Magnani JW, Ye J, Gollob MH, Tsunoda T, Müller-Nurasyid M, Lichtner P, Peters A, Dolmatova E, Kubo M, Smith JD, Psaty BM, Smith NL, Jukema JW, Chasman DI, Albert CM, Ebana Y, Furukawa T, Macfarlane PW, Harris TB, Darbar D, Dörr M, Holst AG, Svendsen JH, Hofman A, Uitterlinden AG, Gudnason V, Isobe M, Malik R, Dichgans M, Rosand J, Van Wagoner DR; METASTROKE Consortium; AFGen Consortium, Benjamin EJ, Milan DJ, Melander O, Heckbert SR, Ford I, Liu Y, Barnard J, Olesen MS, Stricker BH, Tanaka T, Kääb S, Ellinor PT.', journal: 'Circulation',
+authors: 'Sinner MF, Tucker NR, Lunetta KL, Ozaki K, Smith JG, Trompet S, Bis JC, Lin H, Chung MK, Nielsen JB, Lubitz SA, Krijthe BP, Magnani JW, Ye J, Gollob MH, Tsunoda T, Müller-Nurasyid M, Lichtner P, Peters A, Dolmatova E, Kubo M, Smith JD, Psaty BM, Smith NL, Jukema JW, Chasman DI, Albert CM, Ebana Y, Furukawa T, Macfarlane PW, Harris TB, Darbar D, Dörr M, Holst AG, Svendsen JH, Hofman A, Uitterlinden AG, Gudnason V, Isobe M, Malik R, Dichgans M, Rosand J, Van Wagoner DR; METASTROKE Consortium; AFGen Consortium, Benjamin EJ, Milan DJ, Melander O, Heckbert SR, Ford I, Liu Y, Barnard J, Olesen MS, Stricker BH, Tanaka T, Kääb S, Ellinor PT.',
+journal: 'Circulation',
 date: '2014 Oct 7;130(15):1225-35.',
   PMID: 25124494,
    PMCID: 'PMC4190011'
@@ -144,7 +145,7 @@ date: '2013;8(2):e56179.',
 },
 
 {title: 'Germline variants and advanced colorectal adenomas: adenoma prevention with celecoxib trial genome-wide association study.',
-authors: 'Wang J, Carvajal-Carmona LG, Chu JH, Zauber AG; APC Trial Collaborators, Kubo M, Matsuda K, Dunlop M, Houlston RS, Sieber O, Lipton L, Gibbs P, Martin NG, Montgomery GW, Young J, Baird PN, Ratain MJ, Nakamura Y, Weiss ST, Tomlinson I, Bertagnolli MM.',
+authors: 'Wang J, Carvajal-Carmona LG, Chu JH, Zauber AG, APC Trial Collaborators, Kubo M, Matsuda K, Dunlop M, Houlston RS, Sieber O, Lipton L, Gibbs P, Martin NG, Montgomery GW, Young J, Baird PN, Ratain MJ, Nakamura Y, Weiss ST, Tomlinson I, Bertagnolli MM.',
 journal: 'Clin Cancer Res.',
 date: '2013 Dec 1;19(23):6430-7.',
 PMID: 24084763,
@@ -208,7 +209,7 @@ doi: '10.1210/me.2012-1397. Epub 2013 Mar 21.',
 },
 
 {title: 'Integration of cell line and clinical trial genome-wide analyses supports a polygenic architecture of Paclitaxel-induced sensory peripheral neuropathy.',
-authors: 'Wheeler HE, Gamazon ER, Wing C, Njiaju UO, Njoku C, Baldwin RM, Owzar K, Jiang C, Watson D, Shterev I, Kubo M, Zembutsu H, Winer EP, Hudis CA, Shulman LN, Nakamura Y, Ratain MJ, Kroetz DL; Cancer and Leukemia Group B, Cox NJ, Dolan ME.',
+authors: 'Wheeler HE, Gamazon ER, Wing C, Njiaju UO, Njoku C, Baldwin RM, Owzar K, Jiang C, Watson D, Shterev I, Kubo M, Zembutsu H, Winer EP, Hudis CA, Shulman LN, Nakamura Y, Ratain MJ, Kroetz DL, Cancer and Leukemia Group B, Cox NJ, Dolan ME.',
 journal: 'Clin Cancer Res.',
 date: '2013 Jan 15;19(2):491-9.',
  doi: '10.1158/1078-0432.CCR-12-2618. Epub 2012 Nov 30.',
