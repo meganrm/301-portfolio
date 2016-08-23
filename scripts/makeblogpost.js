@@ -9,6 +9,7 @@ function Post(opts){
 };
 
 
+
 Post.prototype.makeCleanArray = function(gList){
   authors = this['authors'].split(',');
   for (var i = 0; i < authors.length; i++) {
@@ -29,12 +30,7 @@ Post.prototype.toHtml= function(templateid){
   return renderTemplate(this);
 };
 
-Post.prototype.createFilter= function(){
-  var $parentOptions = $('#category-filter');
-  if ($parentOptions.find('option[value="' + this.category + '"]').length===0){
-    $('<option>').val(this.category).text(this.category).appendTo($parentOptions);
-  };
-};
+
 
 
 //blog handeling
@@ -49,15 +45,46 @@ postsObjList.forEach(function(element){
 
 
 //RIKEN publications
-Rikenpublications.sort(function(firstEle, secondEle){
-  return (secondEle.date) - (firstEle.date);
-});
+Post.fetchAll = function() {
+  if (!localStorage.rikenpublications) {
+    $.get('../scripts/rikenpublications.js', function(data, message, xhr) {
+      localStorage.rikenpublications = JSON.stringify(data);
+      console.log(xhr.getResponseHeader('eTag'));
+      localStorage.rikeneTag=xhr.getResponseHeader('eTag');
+      Post.fetchAll(); // recursive call
+    });
+  }
+  else{
+    $.ajax({
+      type: 'HEAD',
+      url: '../scripts/rikenpublications.js',
+      success: function(data, message, xhr){
+        var newTag=xhr.getResponseHeader('eTag');
+        if (newTag !== localStorage.rikeneTag){
+          localStorage.rikenpublications ='';
+          console.log(xhr.getResponseHeader('eTag'));
+          Post.fetchAll(); // recursive call
+        } //end of if
+      } //end of success
+    });  //end of ajax
+      var retreivedData = localStorage.rikenpublications.replace(/["]+/g, ''));
+      Post.loadAll(JSON.parse(retreivedData));
+      // articleView.renderIndexPage();
+    };
+};
 
-Rikenpublications.forEach(function(element){
-  var rikenArticle= new Post(element);
-  rikenObjects.push(rikenArticle);
-  rikenArticle.makeCleanArray(listOfRikenAuthors);
-});
+
+
+Post.loadAll = function(retreivedData){
+  retreivedData.sort(function(firstEle, secondEle){
+    return (secondEle.date) - (firstEle.date);
+  });
+  retreivedData.forEach(function(element){
+    var rikenArticle= new Post(element);
+    rikenObjects.push(rikenArticle);
+    rikenArticle.makeCleanArray(listOfRikenAuthors);
+  });
+}
 
 // $('#current-authors').append(authorList.toHtml('#author-template'));
 $('.pub-authors').autocomplete({
@@ -73,6 +100,7 @@ $('#add-author-button').on('click', function(){
   });
 });
 
+
 var authorList = new Post();
 listOfRikenAuthors.sort();
 console.log(listOfRikenAuthors);
@@ -83,6 +111,8 @@ authorList.authors = listOfRikenAuthors;
 poststopublish.forEach(function(article){
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
-  article.createFilter();
+  blogView.createFilter();
   $('#blog-posts').append(article.toHtml('#article-template'));
 });
+
+Post.fetchAll();
