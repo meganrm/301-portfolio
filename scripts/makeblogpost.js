@@ -8,12 +8,6 @@ function Post(opts){
   };
 };
 
-var authorList = new Post();
-listOfRikenAuthors.sort(); //can't figure out why this isn't working
-console.log(listOfRikenAuthors);
-authorList.authors = listOfRikenAuthors;
-// authorList.authors = ['author', 'author2', 'john'];
-
 
 Post.prototype.makeCleanArray = function(gList){
   authors = this['authors'].split(',');
@@ -78,6 +72,13 @@ $('#add-author-button').on('click', function(){
     source: listOfRikenAuthors
   });
 });
+
+var authorList = new Post();
+listOfRikenAuthors.sort();
+console.log(listOfRikenAuthors);
+authorList.authors = listOfRikenAuthors;
+// authorList.authors = ['author', 'author2', 'john'];
+
 
 poststopublish.forEach(function(article){
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
