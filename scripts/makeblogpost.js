@@ -48,7 +48,8 @@ postsObjList.forEach(function(element){
 Post.fetchAll = function() {
   if (!localStorage.rikenpublications) {
     $.get('../scripts/rikenpublications.js', function(data, message, xhr) {
-      localStorage.rikenpublications = JSON.stringify(data);
+      console.log('data from get', data);
+      localStorage.setItem('rikenpublications',JSON.stringify(data));
       console.log(xhr.getResponseHeader('eTag'));
       localStorage.rikeneTag=xhr.getResponseHeader('eTag');
       Post.fetchAll(); // recursive call
@@ -67,26 +68,25 @@ Post.fetchAll = function() {
         } //end of if
       } //end of success
     });  //end of ajax
-      var retreivedData = localStorage.rikenpublications.replace(/["]+/g, ''));
-      Post.loadAll(JSON.parse(retreivedData));
+    var retreivedData =  JSON.parse(localStorage.rikenpublications);
+    Post.loadAll(eval(retreivedData));
       // articleView.renderIndexPage();
-    };
+  };
 };
 
 
 
 Post.loadAll = function(retreivedData){
-  retreivedData.sort(function(firstEle, secondEle){
-    return (secondEle.date) - (firstEle.date);
-  });
+  retreivedData.sort();
   retreivedData.forEach(function(element){
     var rikenArticle= new Post(element);
     rikenObjects.push(rikenArticle);
     rikenArticle.makeCleanArray(listOfRikenAuthors);
   });
-}
+};
 
 // $('#current-authors').append(authorList.toHtml('#author-template'));
+
 $('.pub-authors').autocomplete({
   minLength: 3,
   source: listOfRikenAuthors
