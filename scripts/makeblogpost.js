@@ -1,6 +1,6 @@
-var poststopublish = [];
-var rikenObjects = [];
-var listOfRikenAuthors = [];
+
+(function(module)){
+
 
 function Post(opts){
   for (keys in opts) {
@@ -8,7 +8,10 @@ function Post(opts){
   };
 };
 
-
+Post.allArticles=[];
+Post.poststopublish = [];
+Post.rikenObjects = [];
+Post.listOfRikenAuthors = [];
 
 Post.prototype.makeCleanArray = function(gList){
   authors = this['authors'].split(',');
@@ -34,12 +37,12 @@ Post.prototype.toHtml= function(templateid){
 
 
 //blog handeling
-postsObjList.sort(function(firstEle, secondEle){
-  return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
-});
-
-postsObjList.forEach(function(element){
-  poststopublish.push(new Post(element));
+Post.loadIntoObjectArray = function(inputdata)
+  Post.allArticles.inputdata.sort(function(firstEle, secondEle){
+    return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
+  }).map(function(ele){
+    return new Post(ele)
+  });
 });
 
 
@@ -116,3 +119,5 @@ poststopublish.forEach(function(article){
 });
 
 Post.fetchAll();
+module.Article = Article; //QUESTION: Whats this doing again?
+})(window);
