@@ -29,7 +29,7 @@
     return renderTemplate(this);
   };
 
-  RikenP.loadIntoObjectArray = function(inputdata){
+  RikenP.loadIntoObjectArray = function(inputdata, nextFunction){
     RikenP.rikenObjects = inputdata.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
@@ -62,7 +62,7 @@
           } //end of if
           console.log('got your data right here');
           var retreivedData =  JSON.parse(localStorage.getItem(name, JSON.stringify(data)));
-          RikenP.loadIntoObjectArray(eval(retreivedData));
+          RikenP.loadIntoObjectArray(eval(retreivedData), nextFunction);
         } //end of success
       });  //end of ajax
     };
