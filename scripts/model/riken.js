@@ -35,6 +35,7 @@
     }).map(function(ele){
       return new RikenP(ele);
     });
+    nextFunction();
   };
 
 //RIKEN publications
