@@ -23,7 +23,7 @@
 
   };
 
-  RikenP.prototype.toHtml= function(templateid){
+  RikenP.prototype.toHtml = function(templateid){
     var source = $(templateid).html();
     var renderTemplate = Handlebars.compile(source);
     return renderTemplate(this);
@@ -45,7 +45,7 @@
         // console.log('data from get', data);
         localStorage.setItem(name,JSON.stringify(data));
         console.log(xhr.getResponseHeader('eTag'));
-        localStorage['eTag'+name]=xhr.getResponseHeader('eTag');
+        localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
         RikenP.fetchAll(url, name, nextFunction); // recursive call
       });
     }
@@ -54,8 +54,8 @@
         type: 'HEAD',
         url: url,
         success: function(data, message, xhr){
-          var newTag=xhr.getResponseHeader('eTag');
-          if (newTag !== localStorage['eTag'+name]){
+          var newTag = xhr.getResponseHeader('eTag');
+          if (newTag !== localStorage['eTag' + name]){
             localStorage.rikenpublications ='';
             console.log('getting new data!');
             RikenP.fetchAll(url, name, nextFunction); // recursive call

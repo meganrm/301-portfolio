@@ -8,7 +8,7 @@
     };
   };
 
-  Post.allArticles=[];
+  Post.allArticles =[];
   Post.poststopublish = [];
 
   Post.prototype.toHtml= function(templateid){
@@ -59,12 +59,6 @@
       });  //end of ajax
     };
   };
-
-
-
-
-
-
 
 
   Post.poststopublish.forEach(function(article){
