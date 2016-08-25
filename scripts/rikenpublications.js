@@ -1,4 +1,4 @@
-var Rikenpublications=[
+[
 {title:'Systematic Meta-Analysis and Field Synopsis of Genetic Association Studies in Colorectal Adenomas.',
 authors: 'Montazeri Z, Theodoratou E, Nyiraneza C, Timofeeva M, Chen W, Svinti V, Sivakumaran S, Gresham G, Cubitt L, Carvajal-Carmona L. Bertagnolli MM, Zauber AG, Tomlinson I, Farrington SM, Dunlop MG, Campbell H. Little',
  journal :'J.  Int J Epidemiol',
