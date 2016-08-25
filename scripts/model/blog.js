@@ -18,17 +18,18 @@
   };
 
 //blog handeling
-  Post.loadIntoObjectArray = function(inputdata){
+  Post.loadIntoObjectArray = function(inputdata, nextFunction){
     Post.allArticles.inputdata.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new Post(ele);
     });
+    nextFunction();
   };
 
 
 
-  Post.fetchAll = function(url, name) {
+  Post.fetchAll = function(url, name, nextFunction) {
     if (!localStorage.rikenpublications) {
       $.get(url, function(data, message, xhr) {
         // console.log('data from get', data);
@@ -50,7 +51,7 @@
             Post.fetchAll(); // recursive call
           } //end of if
           var retreivedData =  JSON.parse(localStorage.getItem(name, JSON.stringify(data)));
-          Post.loadAll(eval(retreivedData));
+          Post.loadIntoObjectArray(eval(retreivedData), nextFunction);
         } //end of success
 
       });  //end of ajax
@@ -61,16 +62,7 @@
 
 
 
-  Post.loadAll = function(retreivedData){
-    retreivedData.sort();
-    retreivedData.forEach(function(element){
-      var rikenArticle= new Post(element);
-      Post.rikenObjects.push(rikenArticle);
-      Post.rikenArticle.makeCleanArray(Post.listOfRikenAuthors);
-    });
-  };
 
-// $('#current-authors').append(authorList.toHtml('#author-template'));
 
 
 
@@ -82,7 +74,6 @@
     $('#blog-posts').append(article.toHtml('#article-template'));
   });
 
-  Post.fetchAll('../scripts/rikenpublications.js', 'rikenpublications');
 
-  module.Post = Post; //QUESTION: Whats this doing again?
+  module.Post = Post;
 })(window);

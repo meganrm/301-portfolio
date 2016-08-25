@@ -20,7 +20,7 @@
     });
 
   };
-  RikenP.fetchAll('../scripts/rikenpublications.js', 'rikenpublications', rikenView.autocompleteAuthors); //HALP!!! 
+  RikenP.fetchAll('../scripts/rikenpublications.js', 'rikenpublications', rikenView.autocompleteAuthors); 
   module.rikenView = rikenView;
 
 })(window);

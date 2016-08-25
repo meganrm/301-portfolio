@@ -69,5 +69,5 @@
     };
   };
 
-  module.RikenP = RikenP; //QUESTION: Whats this doing again?
+  module.RikenP = RikenP; 
 })(window);
