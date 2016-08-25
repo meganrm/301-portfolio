@@ -29,13 +29,12 @@
     return renderTemplate(this);
   };
 
-  RikenP.loadIntoObjectArray = function(inputdata, nextFunction){
+  RikenP.loadIntoObjectArray = function(inputdata){
     RikenP.rikenObjects = inputdata.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new RikenP(ele);
     });
-    nextFunction();
   };
 
 //RIKEN publications
@@ -62,12 +61,13 @@
             RikenP.fetchAll(); // recursive call
           } //end of if
           console.log('got your data right here');
-          var retreivedData =  JSON.parse(localStorage.getItem(name, JSON.stringify(data)));
-          RikenP.loadIntoObjectArray(eval(retreivedData), nextFunction);
+          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
+          RikenP.loadIntoObjectArray(eval(retreivedData));
+          nextFunction();
         } //end of success
       });  //end of ajax
     };
   };
 
-  module.RikenP = RikenP; 
+  module.RikenP = RikenP;
 })(window);
