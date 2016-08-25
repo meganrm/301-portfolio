@@ -18,25 +18,25 @@
   };
 
 //blog handeling
-  Post.loadIntoObjectArray = function(inputdata, nextFunction){
-    Post.allArticles.inputdata.sort(function(firstEle, secondEle){
+  Post.loadIntoObjectArray = function(inputdata){
+    Post.allArticles = inputdata.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new Post(ele);
     });
-    nextFunction();
   };
 
 
 
   Post.fetchAll = function(url, name, nextFunction) {
-    if (!localStorage.rikenpublications) {
+    if (!localStorage[name]) {
+      console.log('nothing in local storage');
       $.get(url, function(data, message, xhr) {
         // console.log('data from get', data);
         localStorage.setItem(name,JSON.stringify(data));
         console.log(xhr.getResponseHeader('eTag'));
         localStorage['eTag'+name]=xhr.getResponseHeader('eTag');
-        Post.fetchAll(); // recursive call
+        Post.fetchAll(url, name, nextFunction); // recursive call
       });
     }
     else{
@@ -46,17 +46,17 @@
         success: function(data, message, xhr){
           var newTag=xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag'+name]){
-            localStorage.rikenpublications ='';
-            console.log(xhr.getResponseHeader('eTag'));
-            Post.fetchAll(); // recursive call
+            localStorage[name] ='';
+            console.log('getting new  blog data');
+            Post.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
-          var retreivedData =  JSON.parse(localStorage.getItem(name, JSON.stringify(data)));
-          Post.loadIntoObjectArray(eval(retreivedData), nextFunction);
+          console.log('got your blog right here');
+          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
+          console.log(retreivedData);
+          Post.loadIntoObjectArray(retreivedData);
+          nextFunction();
         } //end of success
-
       });  //end of ajax
-
-        // articleView.renderIndexPage();
     };
   };
 

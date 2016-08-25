@@ -20,8 +20,16 @@
       }
     });
   };
-  Post.fetchAll('../scripts/blogposts.js', 'blogs', blogView.filterByCategory());
-  module.blogView = blogView;
 
+  blogView.renderBlog = function(){
+    Post.allArticles.forEach(function(ele){
+      $('#blog-posts').append(ele.toHtml('#article-template'));
+    })
+    blogView.createFilter;
+    blogView.filterByCategory;
+  }
+  Post.fetchAll('/../scripts/blogposts.json', 'blogs', blogView.renderBlog);
+
+  module.blogView = blogView;
 
 })(window);

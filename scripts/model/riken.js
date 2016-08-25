@@ -39,7 +39,7 @@
 
 //RIKEN publications
   RikenP.fetchAll = function(url, name, nextFunction) {
-    if (!localStorage.rikenpublications) {
+    if (!localStorage[name]) {
       console.log('nothing in local storage');
       $.get(url, function(data, message, xhr) {
         // console.log('data from get', data);
