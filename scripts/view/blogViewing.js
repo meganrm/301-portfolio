@@ -2,7 +2,7 @@
 
 
   var blogView = {};
-
+// TODO: create a method to handle new post button
   blogView.createFilter= function(){
     var $parentOptions = $('#category-filter');
     if ($parentOptions.find('option[value="' + this.category + '"]').length===0){
