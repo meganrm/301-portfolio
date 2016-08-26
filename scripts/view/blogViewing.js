@@ -26,7 +26,7 @@
         $('#create-new-post').animate({right: 0}, 500).addClass('showing').removeClass('hidden');
       }
       else{
-        $('#create-new-post').animate({right: -330}, 500).addClass('hidden').removeClass('showing');
+        $('#create-new-post').animate({right: '-28%'}, 500).addClass('hidden').removeClass('showing');
       }
     });
   };

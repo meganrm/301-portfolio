@@ -30,7 +30,10 @@
     Post.allArticles = inputdata.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
-      return new Post(ele);
+      var post = new Post(ele);
+      post.daysAgo = parseInt((new Date() - new Date(post.publishedOn))/60/60/24/1000);
+      post.publishStatus = post.publishedOn ? 'published ' + post.daysAgo + ' days ago' : '(draft)';
+      return post;
     });
   };
 
@@ -69,13 +72,6 @@
       });  //end of ajax
     };
   };
-
-  Post.poststopublish.forEach(function(article){
-    this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
-    this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
-    blogView.createFilter();
-    $('#blog-posts').append(article.toHtml('#article-template'));
-  });
 
   module.Post = Post;
 })(window);

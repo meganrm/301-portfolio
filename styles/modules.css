@@ -65,13 +65,13 @@ datalist{
 
 #create-new-post{
   position: fixed;
-  right:-330px;
+  right:-28%;
   top:50%;
   background-color:#7A6A53;
 }
 
 #toggleform{
-  width: 10%;
+  width: 15%;
   float: left;
   height: 200px;
 }
