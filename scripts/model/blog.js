@@ -26,8 +26,6 @@
     });
   };
 
-
-
   Post.fetchAll = function(url, name, nextFunction) {
     if (!localStorage[name]) {
       console.log('nothing in local storage');
@@ -35,7 +33,7 @@
         // console.log('data from get', data);
         localStorage.setItem(name,JSON.stringify(data));
         console.log(xhr.getResponseHeader('eTag'));
-        localStorage['eTag'+name]=xhr.getResponseHeader('eTag');
+        localStorage['eTag'+name] = xhr.getResponseHeader('eTag');
         Post.fetchAll(url, name, nextFunction); // recursive call
       });
     }
@@ -60,14 +58,12 @@
     };
   };
 
-
   Post.poststopublish.forEach(function(article){
     this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
     this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
     blogView.createFilter();
     $('#blog-posts').append(article.toHtml('#article-template'));
   });
-
 
   module.Post = Post;
 })(window);

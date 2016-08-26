@@ -23,9 +23,13 @@
   };
 
   blogView.handleCreateNewButton = function(){
-    $('#create-post-button').on('click', function(){
-      console.log('showing form', $('#new-blog-form'));
-      $('#new-blog-form').toggleClass('hide');
+    $('#toggleform').on('click', function(){
+      if ($('#create-new-post.hidden').length === 1){
+        $('#create-new-post').animate({right: 0}, 500).addClass('showing').removeClass('hidden');
+      }
+      else{
+        $('#create-new-post').animate({right: -330}, 500).addClass('hidden').removeClass('showing');
+      }
     });
   };
 

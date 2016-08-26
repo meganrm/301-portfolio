@@ -1,6 +1,5 @@
 (function(module){
 
-
   function RikenP(opts){
     for (keys in opts) {
       this[keys] = opts[keys];
@@ -20,7 +19,6 @@
     },[]).filter(function(authorElement, index, array){
       return array.indexOf(authorElement) === index;
     });
-
   };
 
   RikenP.prototype.toHtml = function(templateid){

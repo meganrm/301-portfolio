@@ -88,7 +88,6 @@
       </section>
 <!-- TODO: set up button for creating new posts -->
       <section id = "blog-posts" class="tab-content">
-        <button type="button" id="create-post-button">Create New Post</button>
         <div>
           <ul id="filters">
               <select id="category-filter">
@@ -98,8 +97,12 @@
           </ul>
         </div>
 
-      <div id="create-new-post">
-        <form action="submit" id="new-blog-form" class='hide'>
+      <div id="create-new-post" class="hidden">
+        <div id="toggleform">
+
+        </div>
+
+        <form action="submit" id="new-blog-form" >
           <label>
             <input type="text" id="article-title" placeholder="Article title" required>
           </label>
