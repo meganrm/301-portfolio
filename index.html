@@ -32,7 +32,7 @@
   </script>
   <!-- author template -->
   <script id="author-template" type="text/x-handlebars-templates">
-    {{#each authors}}
+    {{#each categories}}
     <option value='{{this}}' label="{{this}}">{{this}}</option>
       {{/each}}
   </script>
@@ -63,7 +63,7 @@
           <li class='tab' data-content="blog-posts"><a href="#">Blog</a></li>
           <li class='tab' data-content="projects"><a href="#">Projects</a></li>
           <li class='tab' data-content="riken-form" id="riken"><a href="#">Riken app</a></li>
-          <li class='tab' id="todo"><a href="mailto:pgrn website <project.155076351.5868347@todoist.net>">Email a todo to me</a></li>
+          <li class='tab' id="todo"><a href="mailto:project.155076351.5868347@todoist.net">Email a todo to me</a></li>
         </ul>
       </nav>
       <div class="banner">
@@ -86,7 +86,7 @@
 
         </ul>
       </section>
-
+<!-- TODO: set up button for creating new posts -->
       <section id = "blog-posts" class="tab-content">
         <div>
           <ul id="filters">
@@ -96,28 +96,26 @@
             </li>
           </ul>
         </div>
-        <article class="template">
-          <header>
-            <h2>Title</h2>
 
-          </header>
-          <main>
+      <div id="create-new-post" class="hidden">
+        <div id="toggleform">
 
-            <div class="date">
-              published <time>Publish time</time>
+        </div>
 
-            </div>
-
-            <section class="content">
-              <code class="example-code">
-
-              </code>
-            </section>
-
-          </main>
-
-        </article>
+        <form action="submit" id="new-blog-form" >
+          <label>
+            <input type="text" id="article-title" placeholder="Article title" required>
+          </label>
+          <textarea id="article-body" rows="8" cols="40" required></textarea>
+          <label>
+            <input type="text" id="article-category" placeholder="Category" required>
+          </label>
+            <button type="submit" name="button">Publish</button>
+        </form>
+      </div>
       </section>
+
+      <!-- riken app -->
       <section id="riken-form" class="tab-content">
         <form class="" action="mailto:meganrm@gmail.com" method="post">
           <label for="">
@@ -142,12 +140,17 @@
           </label>
         <button type="submit" name="button">Email to Megan</button>
         </form>
+        <!-- TODO: show the current projects -->
+        <!-- TODO: show a preview of the form -->
+        <!-- TODO: create a button to email me the new object data -->
+        <!-- TODO: repeat all of this for Riken projects -->
+
       </section>
     </main>
 
 
     <footer>
-
+<!-- TODO: add a link here for writing a new blog post -->
     </footer>
     <!-- 3rd party -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
@@ -160,11 +163,10 @@
   <script type="text/javascript" src='scripts/model/riken.js'></script>
   <script type="text/javascript" src='scripts/view/rikenView.js'></script>
 
-    <!-- <script type="text/javascript" src='scripts/blogposts.js'></script>
-    <script type="text/javascript" src='scripts/blogViewing.js'></script> -->
+    <script type="text/javascript" src='scripts/blogposts.json'></script>
+    <script type="text/javascript" src='scripts/model/blog.js'></script>
 
-    <!-- <script type="text/javascript"
-   src='scripts/makeblogpost.js'>    </script> -->
+    <script type="text/javascript" src='scripts/view/blogViewing.js'>    </script>
     <script type="text/javascript" src='scripts/nav.js'></script>
 
   </body>

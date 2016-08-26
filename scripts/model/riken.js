@@ -1,6 +1,5 @@
 (function(module){
 
-
   function RikenP(opts){
     for (keys in opts) {
       this[keys] = opts[keys];
@@ -20,34 +19,32 @@
     },[]).filter(function(authorElement, index, array){
       return array.indexOf(authorElement) === index;
     });
-
   };
 
-  RikenP.prototype.toHtml= function(templateid){
+  RikenP.prototype.toHtml = function(templateid){
     var source = $(templateid).html();
     var renderTemplate = Handlebars.compile(source);
     return renderTemplate(this);
   };
 
-  RikenP.loadIntoObjectArray = function(inputdata, nextFunction){
+  RikenP.loadIntoObjectArray = function(inputdata){
     RikenP.rikenObjects = inputdata.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new RikenP(ele);
     });
-    nextFunction();
   };
 
 //RIKEN publications
   RikenP.fetchAll = function(url, name, nextFunction) {
-    if (!localStorage.rikenpublications) {
+    if (!localStorage[name]) {
       console.log('nothing in local storage');
       $.get(url, function(data, message, xhr) {
         // console.log('data from get', data);
         localStorage.setItem(name,JSON.stringify(data));
         console.log(xhr.getResponseHeader('eTag'));
-        localStorage['eTag'+name]=xhr.getResponseHeader('eTag');
-        RikenP.fetchAll(); // recursive call
+        localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
+        RikenP.fetchAll(url, name, nextFunction); // recursive call
       });
     }
     else{
@@ -55,19 +52,20 @@
         type: 'HEAD',
         url: url,
         success: function(data, message, xhr){
-          var newTag=xhr.getResponseHeader('eTag');
-          if (newTag !== localStorage['eTag'+name]){
+          var newTag = xhr.getResponseHeader('eTag');
+          if (newTag !== localStorage['eTag' + name]){
             localStorage.rikenpublications ='';
             console.log('getting new data!');
-            RikenP.fetchAll(); // recursive call
+            RikenP.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
           console.log('got your data right here');
-          var retreivedData =  JSON.parse(localStorage.getItem(name, JSON.stringify(data)));
-          RikenP.loadIntoObjectArray(eval(retreivedData), nextFunction);
+          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
+          RikenP.loadIntoObjectArray(eval(retreivedData));
+          nextFunction();
         } //end of success
       });  //end of ajax
     };
   };
 
-  module.RikenP = RikenP; 
+  module.RikenP = RikenP;
 })(window);

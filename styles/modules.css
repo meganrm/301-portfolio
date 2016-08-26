@@ -38,10 +38,46 @@ form input{
   margin: 20px;
 }
 
-form{
-  width: 60%;
-}
+
 
 #add-author-button{
   display: inline;
 }
+
+#create-post-button{
+  position:fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+}
+
+#create-new-post{
+  position: fixed;
+  right:-330px;
+  top:50%;
+  background-color:#7A6A53;
+}
+
+#toggleform{
+  width: 10%;
+  float: left;
+  height: 200px;
+}
+
+#new-blog-form{
+  width: 80%;
+  float: left;
+}
+
+
+form #article-body{
+  margin-left:30px;
+}
+
+form input{
+  display: block;
+}
+
+
+
+.
