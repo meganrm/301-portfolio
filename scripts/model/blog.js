@@ -1,7 +1,6 @@
 
 (function(module){
 
-
   function Post(opts){
     for (keys in opts) {
       this[keys] = opts[keys];
@@ -11,7 +10,7 @@
   Post.allArticles =[];
   Post.poststopublish = [];
 
-  Post.prototype.toHtml= function(templateid){
+  Post.prototype.toHtml = function(templateid){
     var source = $(templateid).html();
     var renderTemplate = Handlebars.compile(source);
     return renderTemplate(this);

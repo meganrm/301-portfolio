@@ -1,6 +1,4 @@
-'use strict';
 (function(module){
-
 
   var blogView = {};
 // TODO: create a method to handle new post button
@@ -17,7 +15,6 @@
       $blog.hide();
       if ($(this).val()) {
         $('#blog-posts').find('article[data-category="' + $(this).val() + '"]').fadeIn('slow');
-
       }
     });
   };
