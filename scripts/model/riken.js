@@ -1,7 +1,7 @@
 (function(module){
 
   function RikenP(opts){
-    for (keys in opts) {
+    for (var keys in opts) {
       this[keys] = opts[keys];
     };
   };

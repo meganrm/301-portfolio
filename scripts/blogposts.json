@@ -1,22 +1,31 @@
 [
   {
-    "title": "Brian",
-    "publishedOn": 8
+    "title"       : "Brian",
+    "publishedOn" : 8,
+    "category"    : "code"
   },
   {
     "title": "Rick",
-    "publishedOn": 9
+    "publishedOn": 9,
+    "category"    : "code"
+
   },
   {
     "title": "Amy",
-    "publishedOn": 4
+    "publishedOn": 4,
+    "category"    : "update"
+
   },
   {
     "title": "Gerber",
-    "publishedOn": 3
+    "publishedOn": 3,
+    "category"    : "update"
+
   },
   {
     "title": "Peter",
-    "publishedOn": 11
+    "publishedOn": 11,
+    "category"    : "update"
+
   }
 ]

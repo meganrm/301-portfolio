@@ -2,13 +2,22 @@
 (function(module){
 
   function Post(opts){
-    for (keys in opts) {
+    for (var keys in opts) {
       this[keys] = opts[keys];
     };
   };
 
   Post.allArticles =[];
   Post.poststopublish = [];
+
+  Post.allCategories = function(){
+    return Post.allArticles.map(function(ele){
+      return ele['category'];
+    }).filter(function(element, index, array){
+      return array.indexOf(element) === index;
+    });
+  };
+
 
   Post.prototype.toHtml = function(templateid){
     var source = $(templateid).html();
