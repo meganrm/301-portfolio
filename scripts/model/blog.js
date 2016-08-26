@@ -51,16 +51,20 @@
         url: url,
         success: function(data, message, xhr){
           var newTag=xhr.getResponseHeader('eTag');
-          if (newTag !== localStorage['eTag'+name]){
-            localStorage[name] ='';
-            console.log('getting new  blog data');
+          if (newTag !== localStorage['eTag' + name]){
+            localStorage[name] = '';
+            console.log(newTag, localStorage['eTag' + name]);
+            console.log(name, 'getting new  blog data');
             Post.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
-          console.log('got your blog right here');
-          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
-          console.log(retreivedData);
-          Post.loadIntoObjectArray(retreivedData);
-          nextFunction();
+          else{
+            console.log('eTags the same', newTag, localStorage['eTag' + name]);
+            console.log('got your blog right here');
+            var retreivedData =    JSON.parse(localStorage.getItem(name));
+            console.log(retreivedData);
+            Post.loadIntoObjectArray(retreivedData);
+            nextFunction();
+          }
         } //end of success
       });  //end of ajax
     };
