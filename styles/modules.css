@@ -36,12 +36,14 @@ datalist{
   width: 80%;
   margin: auto;
   max-width: 550px;
+  margin-top: 40px;
 }
 
 #riken-form label{
   display: block;
   width: 100%;
   margin: 20px;
+  border-bottom: 1px solid #D5DED9;
 }
 
 #riken-form input{
@@ -49,8 +51,6 @@ datalist{
   width: 60%;
   margin: 20px;
 }
-
-
 
 #add-author-button{
   display: inline;
