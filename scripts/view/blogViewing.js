@@ -3,16 +3,17 @@
   var blogView = {};
 // TODO: create a method to handle new post button
   blogView.createFilter = function(){
-    var $parentOptions = $('#category-filter');
-    if ($parentOptions.find('option[value="' + this.category + '"]').length===0){
-      $('<option>').val(this.category).text(this.category).appendTo($parentOptions);
-    };
+    var allCategories = new Post();
+    allCategories.categoryList = Post.allCategories();
+    $('#category-filter').append(allCategories.toHtml('#category-template'));
   };
+
 
   blogView.filterByCategory = function (){
     $('#category-filter').on('change', function(){
       var $blog = $('.published-Post');
       $blog.hide();
+      console.log('changing categories');
       if ($(this).val()) {
         $('#blog-posts').find('article[data-category="' + $(this).val() + '"]').fadeIn('slow');
       }
@@ -25,7 +26,7 @@
         $('#create-new-post').animate({right: 0}, 500).addClass('showing').removeClass('hidden');
       }
       else{
-        $('#create-new-post').animate({right: -330}, 500).addClass('hidden').removeClass('showing');
+        $('#create-new-post').animate({right: '-28%'}, 500).addClass('hidden').removeClass('showing');
       }
     });
   };
@@ -38,8 +39,8 @@
     blogView.filterByCategory();
     blogView.handleCreateNewButton();
   };
-  Post.fetchAll('/../scripts/blogposts.json', 'blogs', blogView.renderBlog);
 
+  Post.fetchAll('/../scripts/blogposts.json', 'blogs', blogView.renderBlog);
   module.blogView = blogView;
 
 })(window);

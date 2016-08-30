@@ -14,13 +14,13 @@
 
     <!-- article template -->
     <script id="article-template" type="text/x-handlebars-templates">
-    <article >
+    <article data-category="{{category}}" class="published-Post">
       <header>
         <h2>{{title}}</h2>
       </header>
       <main>
         <div class="date">
-          published <time>{{publishedStatus}}</time>
+           <time>{{publishStatus}}</time>
         </div>
         <section class="content">{{{content}}}
           <code class="example-code">
@@ -31,8 +31,8 @@
     </article>
   </script>
   <!-- author template -->
-  <script id="author-template" type="text/x-handlebars-templates">
-    {{#each categories}}
+  <script id="category-template" type="text/x-handlebars-templates">
+    {{#each categoryList}}
     <option value='{{this}}' label="{{this}}">{{this}}</option>
       {{/each}}
   </script>
@@ -123,8 +123,9 @@
           </label>
           <label for="" id="riken-authors">
             <input type="text" class="pub-authors" name="name" value="" placeholder="authors" list="" >
+            <button type="button" name="button" id="add-author-button">Add another author</button>
+
           </label>
-          <button type="button" name="button" id="add-author-button">Add another author</button>
 
         <!-- <datalist id='current-authors'>
         </datalist> -->

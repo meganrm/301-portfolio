@@ -1,22 +1,31 @@
 [
   {
-    "title": "Brian",
-    "publishedOn": 8
+    "title"       : "Here's another title",
+    "publishedOn" : "2016-01-22",
+    "category"    : "code"
   },
   {
-    "title": "Rick",
-    "publishedOn": 9
+    "title": "Title 4",
+    "publishedOn": "2016-01-22",
+    "category"    : "code"
+
   },
   {
-    "title": "Amy",
-    "publishedOn": 4
+    "title": "Title 2",
+    "publishedOn": "2016-01-22",
+    "category"    : "news"
+
   },
   {
-    "title": "Gerber",
-    "publishedOn": 3
+    "title": "New Title right here",
+    "publishedOn": "2016-01-22",
+    "category"    : "update"
+
   },
   {
-    "title": "Peter",
-    "publishedOn": 11
+    "title": "Pete r",
+    "publishedOn": "2016-01-22",
+    "category"    : "update"
+
   }
 ]

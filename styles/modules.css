@@ -32,9 +32,21 @@ datalist{
   height: 20px;
 }
 
-form input{
+#riken-form{
+  width: 80%;
+  margin: auto;
+  max-width: 550px;
+}
+
+#riken-form label{
+  display: block;
+  width: 100%;
+  margin: 20px;
+}
+
+#riken-form input{
   display: inline-block;
-  width: 300px;
+  width: 60%;
   margin: 20px;
 }
 
@@ -53,13 +65,13 @@ form input{
 
 #create-new-post{
   position: fixed;
-  right:-330px;
+  right:-28%;
   top:50%;
   background-color:#7A6A53;
 }
 
 #toggleform{
-  width: 10%;
+  width: 15%;
   float: left;
   height: 200px;
 }
@@ -74,7 +86,7 @@ form #article-body{
   margin-left:30px;
 }
 
-form input{
+#create-new-post input{
   display: block;
 }
 
