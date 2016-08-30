@@ -8,10 +8,10 @@ navControl.mainNavHandler = function(){
     $('.tab-content').hide();
     $('#' + $clickedOn).fadeIn('slow');
   });
-  
+
   $('.menu-bar .tab:first').click();
 
 };
 
 
-navControl.mainNavHandler();
+// navControl.mainNavHandler();

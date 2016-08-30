@@ -1,4 +1,7 @@
 
+//Not being used yet.
+//TODO: refactor so this is called by both data models.
+
 (function(module){
 
   var GetData = {};

@@ -59,10 +59,10 @@
 
       </div>
         <ul >
-          <li class='tab' data-content="projects"><a href="#">Home</a></li>
-          <li class='tab' data-content="blog-posts"><a href="#">Blog</a></li>
-          <li class='tab' data-content="projects"><a href="#">Projects</a></li>
-          <li class='tab' data-content="riken-form" id="riken"><a href="#">Riken app</a></li>
+          <li class='tab' data-content="projects"><a href="/">Home</a></li>
+          <li class='tab' data-content="blog-posts"><a href="/blog">Blog</a></li>
+          <li class='tab' data-content="projects"><a href="/projects">Projects</a></li>
+          <li class='tab' data-content="riken-form" id="riken"><a href="/riken">Riken app</a></li>
           <li class='tab' id="todo"><a href="mailto:project.155076351.5868347@todoist.net">Email a todo to me</a></li>
         </ul>
       </nav>
@@ -152,22 +152,20 @@
 
 
     <footer>
-<!-- TODO: add a link here for writing a new blog post -->
     </footer>
     <!-- 3rd party -->
+    <script src="vendor/scripts/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="/vendor/scripts/marked.js"></script>
-
-
-  <script type="text/javascript" src='scripts/rikenpublications.js'></script>
-  <script type="text/javascript" src='scripts/jquery-ui.min.js'></script>
-  <script type="text/javascript" src='scripts/model/riken.js'></script>
-  <script type="text/javascript" src='scripts/view/rikenView.js'></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/vendor/scripts/marked.js"></script>
+    <script type="text/javascript" src='scripts/rikenpublications.js'></script>
+    <script type="text/javascript" src='scripts/jquery-ui.min.js'></script>
+    <script type="text/javascript" src='scripts/model/riken.js'></script>
+    <script type="text/javascript" src='scripts/view/rikenView.js'></script>
+    <!-- model -->
     <script type="text/javascript" src='scripts/blogposts.json'></script>
     <script type="text/javascript" src='scripts/model/blog.js'></script>
-
+    <!-- view -->
     <script type="text/javascript" src='scripts/view/blogViewing.js'>    </script>
     <script type="text/javascript" src='scripts/nav.js'></script>
 
