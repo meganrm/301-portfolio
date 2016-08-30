@@ -3,7 +3,6 @@
   rikenView = {};
 
   rikenView.autocompleteAuthors = function(){
-    console.log('hey');
     $('.pub-authors').autocomplete({
       source: RikenP.allAuthors()
     });
