@@ -71,8 +71,7 @@
   };
 
   Post.getTest = function(){
-    $.get('
-https://raw.githubusercontent.com/meganrm/301-portfolio/master/scripts/blogposts.json' +
+    $.get('https://raw.githubusercontent.com/meganrm/301-portfolio/master/scripts/blogposts.json' +
             '?per_page=10' +
             '&sort=updated')
             .done(function(data){
