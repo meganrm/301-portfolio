@@ -1,7 +1,3 @@
-
-//Not being used yet.
-//TODO: refactor so this is called by both data models.
-
 (function(module){
 
   var GetData = {};
@@ -29,7 +25,7 @@
         success: function(data, message, xhr){
           var newTag = xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag' + name]){
-            GetData.fetchAll(url, name, loadDataintoArray, renderDatatoDOM)
+            GetData.fetchAll(url, name, loadDataintoArray, renderDatatoDOM);
           } //end of if
           else {
             loadDataintoArray(name);

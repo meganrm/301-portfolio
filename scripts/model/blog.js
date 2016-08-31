@@ -68,7 +68,7 @@
     };
   };
 
-  Post.jsonTestData = []
+  Post.jsonTestData = [];
   Post.getTest = function(){
     $.get('https://raw.githubusercontent.com/meganrm/301-portfolio/master/scripts/blogposts.json' +
             '?per_page=10' +
@@ -76,7 +76,7 @@
             .done(function(data){
               console.log(data);
               Post.jsonTestData = data;
-            })
+            });
   };
   // Post.getTest();
   module.Post = Post;
