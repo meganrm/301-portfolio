@@ -55,7 +55,7 @@
         localStorage.setItem(name, data);
         console.log('got data', data);
         localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
-        RikenP.fetchAll(url, name, nextFunction); // recursive call
+        RikenP.readData(name, nextFunction); // recursive call
       });
     }
     else{
@@ -66,15 +66,20 @@
           var newTag = xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag' + name]){
             localStorage.rikenpublications ='';
-            RikenP.fetchAll(url, name, nextFunction); // recursive call
+            RikenP.readData(name, nextFunction); // recursive call
           } //end of if
-          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
-          RikenP.loadIntoObjectArray(eval(retreivedData));
-          nextFunction();
         } //end of success
       });  //end of ajax
     };
   };
+
+  RikenP.readData = function(name, nextFunction) {
+    var retreivedData =  JSON.parse(localStorage.getItem(name, data));
+    RikenP.loadIntoObjectArray(eval(retreivedData));
+    nextFunction();
+  }
+
+
   RikenP.createTable();
   module.RikenP = RikenP;
 })(window);
