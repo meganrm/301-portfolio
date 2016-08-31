@@ -6,14 +6,21 @@
 
   var GetData = {};
 
-  GetData.fetchAll = function(url, name, firstcallBack, secondcallback) {
+  GetData.fetchAll = function(url, name, loadDataintoArray, renderDatatoDOM) {
+    $.get(url, function(data, message, xhr) {
+      localStorage.setItem(name, data);
+      console.log('got data', data);
+      localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
+      loadDataintoArray(name);
+      renderDatatoDOM();
+    });
+
+  };
+
+
+  GetData.updataData = function(url, name, loadDataintoArray, renderDatatoDOM) {
     if (!localStorage[name]) {
-      $.get(url, function(data, message, xhr) {
-        localStorage.setItem(name, data);
-        console.log('got data', data);
-        localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
-        RikenP.readData(name, nextFunction); // recursive call
-      });
+      GetData.fetchAll(url, name, loadDataintoArray, renderDatatoDOM);
     }
     else{
       $.ajax({
@@ -22,9 +29,12 @@
         success: function(data, message, xhr){
           var newTag = xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag' + name]){
-            localStorage.rikenpublications ='';
-            RikenP.readData(name, nextFunction); // recursive call
+            GetData.fetchAll(url, name, loadDataintoArray, renderDatatoDOM)
           } //end of if
+          else {
+            loadDataintoArray(name);
+            renderDatatoDOM();
+          }
         } //end of success
       });  //end of ajax
     };
