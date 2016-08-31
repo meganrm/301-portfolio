@@ -41,21 +41,23 @@
       );
   };
 
-  RikenP.loadIntoObjectArray = function(inputdata){
-    RikenP.rikenObjects = inputdata.sort(function(firstEle, secondEle){
+  RikenP.loadIntoObjectArray = function(name){
+    var retreivedData =  JSON.parse(localStorage.getItem(name));
+    RikenP.rikenObjects = retreivedData.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new RikenP(ele);
     });
   };
 
-  RikenP.fetchAll = function(url, name, nextFunction) {
+  RikenP.fetchAll = function(url, name, firstNextFunction, secondNextFunction) {
     if (!localStorage[name]) {
       $.get(url, function(data, message, xhr) {
         localStorage.setItem(name, data);
         console.log('got data', data);
         localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
-        RikenP.readData(name, nextFunction); // recursive call
+        firstNextFunction(name);
+        secondNextFunction();
       });
     }
     else{
@@ -66,18 +68,14 @@
           var newTag = xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag' + name]){
             localStorage.rikenpublications ='';
-            RikenP.readData(name, nextFunction); // recursive call
+            firstNextFunction(name);
+            secondNextFunction();
           } //end of if
         } //end of success
       });  //end of ajax
     };
   };
 
-  RikenP.readData = function(name, nextFunction) {
-    var retreivedData =  JSON.parse(localStorage.getItem(name));
-    RikenP.loadIntoObjectArray(eval(retreivedData));
-    nextFunction();
-  }
 
 
   RikenP.createTable();
