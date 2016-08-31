@@ -70,5 +70,15 @@
     };
   };
 
+  Post.getTest = function(){
+    $.get('https://api.github.com/users/codefellows-seattle-301d9/repos' +
+            '?per_page=10' +
+            '&sort=updated')
+            .done(function(data){
+              console.log(data);
+            })
+  };
+
+  Post.getTest();
   module.Post = Post;
 })(window);
