@@ -45,7 +45,7 @@
         localStorage.setItem(name,JSON.stringify(data));
         console.log(xhr.getResponseHeader('eTag'));
         localStorage['eTag'+name] = xhr.getResponseHeader('eTag');
-        Post.fetchAll(url, name, nextFunction); // recursive call
+        // Post.fetchAll(url, name, nextFunction); // recursive call
       });
     }
     else{
@@ -57,11 +57,11 @@
           if (newTag !== localStorage['eTag' + name]){
             localStorage[name] = '';
             console.log(name, 'getting new  blog data');
-            Post.fetchAll(url, name, nextFunction); // recursive call
+            // Post.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
           else{
             console.log('got your blog right here');
-            var retreivedData =    JSON.parse(localStorage.getItem(name));
+            var retreivedData = JSON.parse(localStorage.getItem(name));
             Post.loadIntoObjectArray(retreivedData);
             nextFunction();
           }
@@ -69,6 +69,7 @@
       });  //end of ajax
     };
   };
+
   Post.jsonTestData = []
   Post.getTest = function(){
     $.get('https://raw.githubusercontent.com/meganrm/301-portfolio/master/scripts/blogposts.json' +
@@ -79,6 +80,6 @@
               Post.jsonTestData = data;
             })
   };
-  Post.getTest();
+  // Post.getTest();
   module.Post = Post;
 })(window);
