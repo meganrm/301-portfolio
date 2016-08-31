@@ -74,7 +74,7 @@
   };
 
   RikenP.readData = function(name, nextFunction) {
-    var retreivedData =  JSON.parse(localStorage.getItem(name, data));
+    var retreivedData =  JSON.parse(localStorage.getItem(name));
     RikenP.loadIntoObjectArray(eval(retreivedData));
     nextFunction();
   }
