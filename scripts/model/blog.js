@@ -71,7 +71,8 @@
   };
 
   Post.getTest = function(){
-    $.get('https://api.github.com/users/codefellows-seattle-301d9/repos' +
+    $.get('
+https://raw.githubusercontent.com/meganrm/301-portfolio/master/scripts/blogposts.json' +
             '?per_page=10' +
             '&sort=updated')
             .done(function(data){

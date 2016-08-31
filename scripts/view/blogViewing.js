@@ -40,7 +40,7 @@
     blogView.handleCreateNewButton();
   };
 
-  Post.fetchAll('/../scripts/blogposts.json', 'blogs', blogView.renderBlog);
+  Post.fetchAll('https://api.github.com/users/meganrm/repos/301-portolio/scripts/blogposts.json', 'blogs', blogView.renderBlog);
   module.blogView = blogView;
 
 })(window);
