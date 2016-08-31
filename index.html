@@ -14,34 +14,34 @@
 
     <!-- article template -->
     <script id="article-template" type="text/x-handlebars-templates">
-    <article data-category="{{category}}" class="published-Post">
-      <header>
-        <h2>{{title}}</h2>
-      </header>
-      <main>
-        <div class="date">
-           <time>{{publishStatus}}</time>
-        </div>
-        <section class="content">{{{content}}}
-          <code class="example-code">
-            {{code}}
-          </code>
-        </section>
-      </main>
-    </article>
-  </script>
-  <!-- author template -->
-  <script id="category-template" type="text/x-handlebars-templates">
-    {{#each categoryList}}
-    <option value='{{this}}' label="{{this}}">{{this}}</option>
-      {{/each}}
-  </script>
-<!-- end author template -->
-<!-- new author template  -->
-<script id="new-author-template" type="text/x-handlebars-templates">
-  <input type="text" class="pub-authors" name="name" value="" placeholder="author" list="" >
-</script>
- <!-- end new author template -->
+      <article data-category="{{category}}" class="published-Post">
+        <header>
+          <h2>{{title}}</h2>
+        </header>
+        <main>
+          <div class="date">
+             <time>{{publishStatus}}</time>
+          </div>
+          <section class="content">{{{content}}}
+            <code class="example-code">
+              {{code}}
+            </code>
+          </section>
+        </main>
+      </article>
+    </script>
+    <!-- author template -->
+    <script id="category-template" type="text/x-handlebars-templates">
+      {{#each categoryList}}
+      <option value='{{this}}' label="{{this}}">{{this}}</option>
+        {{/each}}
+    </script>
+    <!-- end author template -->
+    <!-- new author template  -->
+    <script id="new-author-template" type="text/x-handlebars-templates">
+      <input type="text" class="pub-authors" name="name" value="" placeholder="author" list="" >
+    </script>
+     <!-- end new author template -->
   </head>
   <body>
     <header>
@@ -54,27 +54,22 @@
 
       </div>
       <nav class='menu-bar'>
-
-      <div class="icon-menu">
-
-      </div>
+        <div class="icon-menu"></div>
         <ul >
-          <li class='tab' data-content="projects"><a href="#">Home</a></li>
-          <li class='tab' data-content="blog-posts"><a href="#">Blog</a></li>
-          <li class='tab' data-content="projects"><a href="#">Projects</a></li>
-          <li class='tab' data-content="riken-form" id="riken"><a href="#">Riken app</a></li>
+          <li class='tab' data-content="projects"><a href="/">Home</a></li>
+          <li class='tab' data-content="blog-posts"><a href="/blog">Blog</a></li>
+          <li class='tab' data-content="projects"><a href="/projects">Projects</a></li>
+          <li class='tab' data-content="riken-form" id="riken"><a href="/riken">Riken app</a></li>
           <li class='tab' id="todo"><a href="mailto:project.155076351.5868347@todoist.net">Email a todo to me</a></li>
         </ul>
       </nav>
       <div class="banner">
         <h1>Web Development Projects</h1>
       </div>
-
     </header>
 
     <main>
       <section id="projects" class="tab-content">
-
         <ul>
           <li>
             <a href="http://meganrm.github.io/fewd-website/finalproject.html"> Visual Scientific Literature Search
@@ -83,9 +78,9 @@
               This is a project I'm developing that enables users to see a citation network of a given scientific query. You can search for authors names, keywords, journals, etc. The app uses Scopus API.
             </p>
           </li>
-
         </ul>
       </section>
+
 <!-- TODO: set up button for creating new posts -->
       <section id = "blog-posts" class="tab-content">
         <div>
@@ -98,10 +93,7 @@
         </div>
 
       <div id="create-new-post" class="hidden">
-        <div id="toggleform">
-
-        </div>
-
+        <div id="toggleform"></div>
         <form action="submit" id="new-blog-form" >
           <label>
             <input type="text" id="article-title" placeholder="Article title" required>
@@ -125,12 +117,9 @@
           <label for="" id="riken-authors">Start typing to see current Authors
             <input type="text" class="pub-authors" name="name" value="" placeholder="authors" list="" >
             <button type="button" name="button" id="add-author-button">Add another author</button>
-
           </label>
-
         <!-- <datalist id='current-authors'>
         </datalist> -->
-
           <label for="">
             <input type="text" id="pub-journal" name="name" value="" placeholder="journal">
           </label>
@@ -140,36 +129,38 @@
           <label for="">
             <input type="text" id="pub-PMID" name="name" value="" placeholder="PMID">
           </label>
-        <button type="submit" name="button">Email to Megan</button>
+          <button type="submit" name="button">Email to Megan</button>
         </form>
         <!-- TODO: show the current projects -->
         <!-- TODO: show a preview of the form -->
         <!-- TODO: create a button to email me the new object data -->
         <!-- TODO: repeat all of this for Riken projects -->
-
       </section>
     </main>
-
-
     <footer>
-<!-- TODO: add a link here for writing a new blog post -->
     </footer>
     <!-- 3rd party -->
+    <script src="vendor/scripts/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="/vendor/scripts/marked.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/vendor/scripts/marked.js"></script>
+    <script src='scripts/rikenpublications.js'></script>
+    <script src='scripts/jquery-ui.min.js'></script>
+    <script src='scripts/model/riken.js'></script>
+    <script src='scripts/view/rikenView.js'></script>
 
+    <!-- model -->
+    <script src='scripts/blogposts.json'></script>
+    <script src='scripts/model/blog.js'></script>
 
-  <script type="text/javascript" src='scripts/rikenpublications.js'></script>
-  <script type="text/javascript" src='scripts/jquery-ui.min.js'></script>
-  <script type="text/javascript" src='scripts/model/riken.js'></script>
-  <script type="text/javascript" src='scripts/view/rikenView.js'></script>
-
-    <script type="text/javascript" src='scripts/blogposts.json'></script>
-    <script type="text/javascript" src='scripts/model/blog.js'></script>
-
-    <script type="text/javascript" src='scripts/view/blogViewing.js'>    </script>
+    <!-- view -->
+    <script type="text/javascript" src='scripts/view/blogViewing.js'></script>
     <script type="text/javascript" src='scripts/nav.js'></script>
 
+    <!-- controllers -->
+    <script src='scripts/controllers/blogController.js'></script>
+    <script src='scripts/controllers/projectController.js'></script>
+    <script src='scripts/controllers/rikenController.js'></script>
+    <script src='scripts/controllers/routes.js'></script>
   </body>
 </html>

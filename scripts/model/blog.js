@@ -56,15 +56,12 @@
           var newTag=xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag' + name]){
             localStorage[name] = '';
-            console.log(newTag, localStorage['eTag' + name]);
             console.log(name, 'getting new  blog data');
             Post.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
           else{
-            console.log('eTags the same', newTag, localStorage['eTag' + name]);
             console.log('got your blog right here');
             var retreivedData =    JSON.parse(localStorage.getItem(name));
-            console.log(retreivedData);
             Post.loadIntoObjectArray(retreivedData);
             nextFunction();
           }
