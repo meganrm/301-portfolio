@@ -23,7 +23,7 @@
           var newTag=xhr.getResponseHeader('eTag');
           if (newTag !== localStorage['eTag' + name]){
             localStorage[name] = '';
-            GetData.fetchAll(url, name, nextFunction); // recursive call
+            // GetData.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
           else{
             var retreivedData = JSON.parse(localStorage.getItem(name));
@@ -34,6 +34,6 @@
       });  //end of ajax
     };
   };
-
+  console.log('removed recursive');
   module.GetData = GetData;
 })(window);
