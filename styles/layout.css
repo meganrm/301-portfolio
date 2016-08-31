@@ -56,7 +56,6 @@
 /*portfolio items*/
 #projects li{
   border-bottom: solid 2px #5D4157;
-  height: 300px;
   text-align: center;
 
 }
@@ -65,8 +64,12 @@
   margin: auto;
   text-align: left;
   margin-top: 20px;
+
 }
 
+.portfolio-template{
+
+}
 
 
 /*full screen */
@@ -81,7 +84,26 @@
     display: inline-block;
     min-width: 200px;
   }
+
+}
+
+@media (min-width: 886px) {
+  .portfolio-row{
+    width: 33%;
+    display: inline-block;
+    margin-top: 50px;
+    border: none !important;
+  }
+
   .portfolio-thumbnails{
-    width: 30%;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    border: solid 1px #5D4157;
+    overflow: hidden;
+    font-weight: 300;
+    font-size: .8em;
+    max-width: 250px;
+    height: 250px;
+    text-align: center;
+    margin: auto;
   }
 }
