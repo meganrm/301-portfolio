@@ -44,16 +44,17 @@
      <!-- end new author template -->
      <!-- repo template  -->
     <script id="repo-template" type="text/x-handlebars-template">
-      <li>
-        <!-- TODO: **DONE** fill in our Handlebars expressions -->
-        <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
-        <p>Description: {{description}}</p>
-        <p>Language: {{language}}</p>
-        <p>Created: {{created_at}}</p>
-        <p>Last updated: {{updated_at}}</p>
-        {{#if watchers_count}}
-         <p>{{watchers}} watching this repo</p>
-        {{/if}}
+      <li class="portfolio-row">
+        <div class="portfolio-thumbnails">
+          <a href="{{html_url}}" target="_blank"><h3>{{name}}</h3></a>
+          <p>Description: {{description}}</p>
+          <p>Language: {{language}}</p>
+          <p>Created: {{created_at}}</p>
+          <p>Last updated: {{updated_at}}</p>
+          {{#if watchers_count}}
+           <p>{{watchers}} watching this repo</p>
+          {{/if}}
+        </div>
       </li>
     </script>
   </head>
@@ -85,13 +86,15 @@
     <main>
       <section id="projects" class="tab-content">
         <ul>
-          <li>
-            <a href="http://meganrm.github.io/fewd-website/finalproject.html"> Visual Scientific Literature Search
-            </a>
-            <p>
-              This is a project I'm developing that enables users to see a citation network of a given scientific query. You can search for authors names, keywords, journals, etc. The app uses Scopus API.
-            </p>
-          </li>
+          <div class="portfolio-row">
+            <li class="portfolio-thumbnails">
+              <a href="http://meganrm.github.io/fewd-website/finalproject.html"> Visual Scientific Literature Search
+              </a>
+              <p>
+                This is a project I'm developing that enables users to see a citation network of a given scientific query. You can search for authors names, keywords, journals, etc. The app uses Scopus API.
+              </p>
+            </li>
+          </div>
         </ul>
       </section>
 
