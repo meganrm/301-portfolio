@@ -1,5 +1,4 @@
 (function(module){
-
   var GetData = {};
 
   GetData.fetchAll = function(url, name, loadDataintoArray, renderDatatoDOM) {
@@ -10,11 +9,9 @@
       loadDataintoArray(name);
       renderDatatoDOM();
     });
-
   };
 
-
-  GetData.updataData = function(url, name, loadDataintoArray, renderDatatoDOM) {
+  GetData.updateData = function(url, name, loadDataintoArray, renderDatatoDOM) {
     if (!localStorage[name]) {
       GetData.fetchAll(url, name, loadDataintoArray, renderDatatoDOM);
     }

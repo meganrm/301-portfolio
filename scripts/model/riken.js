@@ -50,34 +50,6 @@
     });
   };
 
-  RikenP.fetchAll = function(url, name, firstNextFunction, secondNextFunction) {
-    if (!localStorage[name]) {
-      $.get(url, function(data, message, xhr) {
-        localStorage.setItem(name, data);
-        console.log('got data', data);
-        localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
-        firstNextFunction(name);
-        secondNextFunction();
-      });
-    }
-    else{
-      $.ajax({
-        type: 'HEAD',
-        url: url,
-        success: function(data, message, xhr){
-          var newTag = xhr.getResponseHeader('eTag');
-          if (newTag !== localStorage['eTag' + name]){
-            localStorage.rikenpublications ='';
-            firstNextFunction(name);
-            secondNextFunction();
-          } //end of if
-        } //end of success
-      });  //end of ajax
-    };
-  };
-
-
-
   RikenP.createTable();
   module.RikenP = RikenP;
 })(window);
