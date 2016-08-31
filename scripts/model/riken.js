@@ -52,7 +52,8 @@
   RikenP.fetchAll = function(url, name, nextFunction) {
     if (!localStorage[name]) {
       $.get(url, function(data, message, xhr) {
-        localStorage.setItem(name,JSON.stringify(data));
+        localStorage.setItem(name, data);
+        console.log('got data', data);
         localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
         RikenP.fetchAll(url, name, nextFunction); // recursive call
       });
