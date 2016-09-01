@@ -4,7 +4,6 @@
   GetData.fetchAll = function(url, name, loadDataintoArray, renderDatatoDOM) {
     $.get(url, function(data, message, xhr) {
       localStorage.setItem(name, data);
-      console.log('got data', data);
       localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
       loadDataintoArray(name);
       renderDatatoDOM();
@@ -54,7 +53,5 @@
   //    }
   //  })
 
-
-  console.log('removed recursive');
   module.GetData = GetData;
 })(window);
