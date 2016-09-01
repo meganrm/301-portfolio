@@ -19,7 +19,7 @@
 
   };
 
-  RikenP.fetchAll('../scripts/rikenpublications.json', 'rikenpublications', rikenView.autocompleteAuthors);
+  GetData.updateData('../scripts/rikenpublications.json', 'rikenpublications', rikenView.autocompleteAuthors);
   module.rikenView = rikenView;
 
 })(window);

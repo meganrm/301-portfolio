@@ -41,39 +41,15 @@
       );
   };
 
-  RikenP.loadIntoObjectArray = function(inputdata){
-    RikenP.rikenObjects = inputdata.sort(function(firstEle, secondEle){
+  RikenP.loadIntoObjectArray = function(name){
+    var retreivedData =  JSON.parse(localStorage.getItem(name));
+    RikenP.rikenObjects = retreivedData.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new RikenP(ele);
     });
   };
 
-  RikenP.fetchAll = function(url, name, nextFunction) {
-    if (!localStorage[name]) {
-      $.get(url, function(data, message, xhr) {
-        localStorage.setItem(name,JSON.stringify(data));
-        localStorage['eTag' + name] = xhr.getResponseHeader('eTag');
-        RikenP.fetchAll(url, name, nextFunction); // recursive call
-      });
-    }
-    else{
-      $.ajax({
-        type: 'HEAD',
-        url: url,
-        success: function(data, message, xhr){
-          var newTag = xhr.getResponseHeader('eTag');
-          if (newTag !== localStorage['eTag' + name]){
-            localStorage.rikenpublications ='';
-            RikenP.fetchAll(url, name, nextFunction); // recursive call
-          } //end of if
-          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
-          RikenP.loadIntoObjectArray(eval(retreivedData));
-          nextFunction();
-        } //end of success
-      });  //end of ajax
-    };
-  };
   RikenP.createTable();
   module.RikenP = RikenP;
 })(window);
