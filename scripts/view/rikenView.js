@@ -19,7 +19,7 @@
 
   };
 
-  GetData.updateData('../scripts/rikenpublications.json', 'rikenpublications', rikenView.autocompleteAuthors);
+  GetData.updateData('https://raw.githubusercontent.com/meganrm/301-portfolio/master/scripts/rikenpublications.json', 'rikenpublications', RikenP.loadIntoObjectArray, rikenView.autocompleteAuthors);
   module.rikenView = rikenView;
 
 })(window);
