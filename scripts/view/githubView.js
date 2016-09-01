@@ -10,7 +10,7 @@
     $('#projects ul')
       .append(githubRepo.hasAttribute('name')
       .map(repoCompiler)
-    )
+    );
   };
 
   githubRepo.fetchRepos(githubView.renderRepos);
