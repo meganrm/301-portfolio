@@ -41,8 +41,9 @@
       );
   };
 
-  RikenP.loadIntoObjectArray = function(inputdata){
-    RikenP.rikenObjects = inputdata.sort(function(firstEle, secondEle){
+  RikenP.loadIntoObjectArray = function(name){
+    var retreivedData =  JSON.parse(localStorage.getItem(name));
+    RikenP.rikenObjects = retreivedData.sort(function(firstEle, secondEle){
       return (new Date(secondEle.publishedOn)) - (new Date(firstEle.publishedOn));
     }).map(function(ele){
       return new RikenP(ele);
@@ -67,7 +68,7 @@
             localStorage.rikenpublications ='';
             RikenP.fetchAll(url, name, nextFunction); // recursive call
           } //end of if
-          var retreivedData =  JSON.parse(localStorage.getItem(name, data));
+          var retreivedData =  JSON.parse(localStorage.getItem(name));
           RikenP.loadIntoObjectArray(eval(retreivedData));
           nextFunction();
         } //end of success
