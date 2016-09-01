@@ -50,6 +50,7 @@
     });
   };
 
+<<<<<<< HEAD
   RikenP.fetchAll = function(url, name, nextFunction) {
     if (!localStorage[name]) {
       $.get(url, function(data, message, xhr) {
@@ -75,6 +76,8 @@
       });  //end of ajax
     };
   };
+=======
+>>>>>>> class-13
   RikenP.createTable();
   module.RikenP = RikenP;
 })(window);
